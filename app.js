@@ -5,14 +5,21 @@ const app = express();
 
 //register view-engine
 app.set("view engine","ejs") //Setvame view-enjina da ni e ejs
-
 //Po pravilo view engine-a ni gleda v papka views.Ako iskame papkata ni da ima drugo ime trqbva da napravimdolnoto neshto
 //app.set("views","myviews");  Setveme views-ovete da sa ni v myviews ili kakto tam se kazva papkata ni.
+
+//middleware and static files like css
+app.use(express.static("./public"))
 
 //listen for requests
 app.get("/", (req, res) => {
   //   res.send("<h1>Home Page</>");
-  res.render("index");
+  const blogs = [
+    {title: 'Pepi FrontEnd-a', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+    {title: 'Pepi BackEnd-a', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+    {title: 'Pepi FullStack-a', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+  ];
+  res.render("index",{blogs});
 });
 
 app.get("/about", (req, res) => {
