@@ -8,7 +8,8 @@ app.set("view engine","ejs") //Setvame view-enjina da ni e ejs
 //Po pravilo view engine-a ni gleda v papka views.Ako iskame papkata ni da ima drugo ime trqbva da napravimdolnoto neshto
 //app.set("views","myviews");  Setveme views-ovete da sa ni v myviews ili kakto tam se kazva papkata ni.
 
-//middleware and static files like css
+//middleware and static files like css. Pokazvame kade da sa failovete koito da sa publichni. 
+//Po tozi nachin vrazvame i styles.css i moje da go polzvame.
 app.use(express.static("./public"))
 
 //listen for requests
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
     {title: 'Pepi BackEnd-a', snippet: 'Lorem ipsum dolor sit amet consectetur'},
     {title: 'Pepi FullStack-a', snippet: 'Lorem ipsum dolor sit amet consectetur'},
   ];
-  res.render("index",{blogs});
+  res.render("index",{blogs});//Podavame obekt v koito e blogs kato vtori argument
 });
 
 app.get("/about", (req, res) => {
